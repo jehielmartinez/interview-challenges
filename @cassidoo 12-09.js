@@ -1,3 +1,9 @@
+// Write a function where given an array of integers 
+// (where each element represents the max number of steps that can be made forward from that element), 
+// return the minimum number of jumps to reach the end of the array (starting from the first element).
+
+// ---------------------------------------------------------------------------------------------------
+
 let stones = [1, 3, 5, 3, 9, 2, 6, 7, 6, 8, 9];
 
 minJumps(stones);
