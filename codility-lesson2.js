@@ -7,6 +7,8 @@ function OddOcurrences(A){
             return A[i]
         }
     }
+
+    return -1
 }
 
 //Testing
@@ -26,6 +28,11 @@ const cases = [
         label: 'First position answer',
         input: OddOcurrences([5,3,5,9,5,9,5]),
         shouldBe: 3
+    },
+    {
+        label: 'No answer',
+        input: OddOcurrences([5,3,3,9,5,9,5]),
+        shouldBe: -1
     },
 ]
 
