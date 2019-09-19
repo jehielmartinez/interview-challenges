@@ -4,7 +4,6 @@ function cyclicRotation(A, K){
 
         for(i=0; i<len; i++){
             let position = (i+K) % len 
-            console.log(`Operation ${i} => ${i+K} % ${len} = ${position}`)
             B[position] = A[i]  
         }
 
