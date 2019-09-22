@@ -6,7 +6,6 @@ function squareRoot(S, K) {
 
     for(i=0; i<K; i++){
         Xm = (Xm + S/Xm)/2
-        console.log(Xm)
     }
 
     return Xm.toFixed(3)
