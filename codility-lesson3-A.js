@@ -6,7 +6,8 @@
 
 function frogJmp(X, Y, D) {
     
-    if (X >= Y) return -1
+    if (X > Y) return -1
+    if (X == Y) return 0
 
     const jumps = (Y-X)/D
 
@@ -33,7 +34,7 @@ const cases = [
     {
         label: 'X = Y',
         input: frogJmp(20, 20, 30),
-        shouldBe: -1
+        shouldBe: 0
     }
 ]
 
