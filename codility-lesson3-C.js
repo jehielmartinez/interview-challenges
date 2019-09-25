@@ -10,27 +10,28 @@ function tapeEquilibrium(A) {
     let minDiff = Infinity
     let P = 1
 
+    let sumSideA = 0
+    let sumSideB = 0
+    let totalSum = 0    
+
+    for (i = 0; i < N; i++) {
+        totalSum = totalSum + A[i]
+    }
+
     while (P < N) {
-
-        let sumSideA = 0
-        let sumSideB = 0
-
-        let sideA = A.slice(0, P)
-        let sideB = A.slice(P)
-
-        for (i = 0; i < sideA.length; i++) {
-            sumSideA = sumSideA + sideA[i]
-        }
-        for (i = 0; i < sideB.length; i++) {
-            sumSideB = sumSideB + sideB[i]
-        }
+        sumSideA = sumSideA + A[P-1]
+        sumSideB = totalSum - sumSideA
             
         let diference = Math.abs(sumSideB - sumSideA)
 
-        if (diference < minDiff) {
-            minDiff = diference
+        if (diference <= 1){
+            return diference
         }
-        
+
+        if (diference < minDiff) {
+            minDiff < diference
+        }
+
         P++
     }
 
