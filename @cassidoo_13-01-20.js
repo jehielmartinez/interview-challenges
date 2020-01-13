@@ -4,9 +4,9 @@
 function palindromes(n) {
     let result = 0
     for(i=1; i<10; i++){
-        let srtMult = '1'.repeat(n);
+        let strMultiplier = '1'.repeat(n);
 
-        result = result + i * parseInt(srtMult)
+        result = result + i * parseInt(strMultiplier)
     }
     return result
 }
