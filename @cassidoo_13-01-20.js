@@ -23,6 +23,16 @@ const cases = [
         input: palindromes(3),
         shouldBe: 4995
     },
+    {
+        label: '4',
+        input: palindromes(4),
+        shouldBe: 49995
+    },
+    {
+        label: '15',
+        input: palindromes(15),
+        shouldBe: 4999999999999995
+    },
 ]
 
 cases.map(test => console.log((test.input == test.shouldBe ? '✅' : '❗') + "  " + test.label + " => " + "Should be: " + test.shouldBe + " received: " + test.input))
