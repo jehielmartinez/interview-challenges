@@ -18,7 +18,7 @@ const cases = [
     {
         label: '8',
         input: isFactorial(8),
-        shouldBe: false
+        shouldBe: false 
     },
     {
         label: '6',
