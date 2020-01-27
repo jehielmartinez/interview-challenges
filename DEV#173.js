@@ -4,15 +4,17 @@ function doomPercentage(s) {
     let infected = 0;
     let total = 0;
 
-    arr = s.split('X');
-
-    for(i=0; i<arr.length; i++){
-       if(arr[i].includes('1')){
-           arr[i] = arr[i].replace(/0/gi, '1');
-            infected += arr[i].length
-       }
-       total += arr[i].length
+    if(!s.includes('1') || !s.includes('0')){
+        return 0;
     }
+
+    s.split('X').forEach(continent => {
+        if(continent.includes('1')){          
+            continent = continent.replace(/0/gi, '1');
+            infected += continent.length;
+        }
+        total += continent.length
+    });
     
     return 100*infected/total;
 };
@@ -22,12 +24,12 @@ const cases = [
     {
         label: '01000000X000X011X0X',
         input: doomPercentage('01000000X000X011X0X'),
-        shouldBe: 73.333
+        shouldBe: 73.33333333333333
     },
     {
         label: '01X000X010X011XX',
         input: doomPercentage('01X000X010X011XX'),
-        shouldBe: 72.727
+        shouldBe: 72.72727272727273
     },
     {
         label: 'XXXXX',
@@ -52,7 +54,7 @@ const cases = [
     {
         label: 'X00X000000X10X0100',
         input: doomPercentage('X00X000000X10X0100'),
-        shouldBe: 42.857
+        shouldBe: 42.857142857142854
     }   
 ]
 
