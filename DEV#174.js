@@ -1,142 +1,144 @@
 //https://dev.to/thepracticaldev/daily-challenge-174-soccer-league-table-2393
 
-function LeagueTable() {
-    this.matches = []
-};
-
-LeagueTable.prototype.push = function (matchStr){
-    const teams = matchStr.split(' - ');
-    
-    const homeTeam = teams[0].slice(0,-2);
-    const awayTeam = teams[1].slice(2);
-    const homeGoals = parseInt(teams[0].slice(-2));
-    const awayGoals = parseInt(teams[1].slice(0, 2));
-    
-    let homeScore = 0;
-    let awayScore = 0;
-
-    if(homeGoals == awayGoals) {
-        homeScore = 1;
-        awayScore = 1;
-    } else if(homeGoals > awayGoals){
-        homeScore = 3;
-    } else {
-        awayScore = 0;
+class LeagueTable {
+    constructor(){
+        this.matches = []
     }
 
-    const match = {
-        homeTeam,
-        awayTeam,
-        homeGoals,
-        awayGoals,
-        homeScore,
-        awayScore,
+    push = (matchStr) => {
+        const teams = matchStr.split(' - ');
+        
+        const homeTeam = teams[0].slice(0,-2);
+        const awayTeam = teams[1].slice(2);
+        const homeGoals = parseInt(teams[0].slice(-2));
+        const awayGoals = parseInt(teams[1].slice(0, 2));
+        
+        let homeScore = 0;
+        let awayScore = 0;
+
+        if(homeGoals == awayGoals) {
+            homeScore = 1;
+            awayScore = 1;
+        } else if(homeGoals > awayGoals){
+            homeScore = 3;
+        } else {
+            awayScore = 0;
+        }
+
+        const match = {
+            homeTeam,
+            awayTeam,
+            homeGoals,
+            awayGoals,
+            homeScore,
+            awayScore,
+        };
+
+        this.matches.push(match);
+
+        return JSON.stringify(match);
     };
 
-    this.matches.push(match);
+    get_points = (teamName) => {
+        let points = 0;
+    
+        this.matches.forEach(match => {
+            if(match.homeTeam === teamName){
+                points += match.homeScore;
+            } else if(match.awayTeam === teamName){
+                points += match.awayScore;
+            }
+        })
+    
+        return points;
+    };
 
-    return JSON.stringify(match);
+    get_goals_for = (teamName) => {
+        let goals = 0;
+    
+        this.matches.forEach(match => {
+            if(match.homeTeam === teamName){
+                goals += match.homeGoals;
+            } else if(match.awayTeam === teamName){
+                goals += match.awayGoals;
+            }
+        });
+    
+        return goals;
+    };
+
+    get_goals_against = (teamName) => {
+        let goals = 0;
+    
+        this.matches.forEach(match => {
+            if(match.homeTeam === teamName){
+                goals += match.awayGoals;
+            } else if(match.awayTeam === teamName){
+                goals += match.homeGoals;
+            }
+        });
+    
+        return goals;
+    };
+
+    get_goals_difference = (teamName) => {
+        let diff = 0;
+    
+        this.matches.forEach(match => {
+            if(match.homeTeam === teamName){
+                diff += (match.homeGoals - match.awayGoals);
+            } else if(match.awayTeam === teamName){
+                diff += (match.awayGoals - match.homeGoals);;
+            }
+        });
+    
+        return diff;
+    };
+
+    get_wins = (teamName) => {
+        let wins = 0;
+    
+        this.matches.forEach(match => {
+            if(match.homeTeam === teamName && match.homeScore === 3){
+                wins++
+            } else if(match.awayTeam === teamName && match.awayScore === 3){
+                wins++
+            }
+        });
+    
+        return wins;
+    };
+    
+    get_draws = (teamName) => {
+        let draws = 0;
+    
+        this.matches.forEach(match => {
+            if(match.homeTeam === teamName && match.homeScore === 1){
+                draws++
+            } else if(match.awayTeam === teamName && match.awayScore === 1){
+                draws++
+            }
+        });
+    
+        return draws;
+    };
+
+    get_losses = (teamName) => {
+        let losses = 0;
+    
+        this.matches.forEach(match => {
+            if(match.homeTeam === teamName && match.homeScore === 0){
+                losses++
+            } else if(match.awayTeam === teamName && match.awayScore === 0){
+                losses++
+            }
+        });
+    
+        return losses;
+    };
 };
 
-LeagueTable.prototype.get_points = function (teamName){
-    points = 0;
-
-    this.matches.forEach(match => {
-        if(match.homeTeam === teamName){
-            points += match.homeScore;
-        } else if(match.awayTeam === teamName){
-            points += match.awayScore;
-        }
-    })
-
-    return points;
-};
-
-LeagueTable.prototype.get_goals_for = function (teamName){
-    goals = 0;
-
-    this.matches.forEach(match => {
-        if(match.homeTeam === teamName){
-            goals += match.homeGoals;
-        } else if(match.awayTeam === teamName){
-            goals += match.awayGoals;
-        }
-    });
-
-    return goals;
-};
-
-LeagueTable.prototype.get_goals_against = function (teamName){
-    goals = 0;
-
-    this.matches.forEach(match => {
-        if(match.homeTeam === teamName){
-            goals += match.awayGoals;
-        } else if(match.awayTeam === teamName){
-            goals += match.homeGoals;
-        }
-    });
-
-    return goals;
-};
-
-LeagueTable.prototype.get_goals_difference = function (teamName){
-    diff = 0;
-
-    this.matches.forEach(match => {
-        if(match.homeTeam === teamName){
-            diff += (match.homeGoals - match.awayGoals);
-        } else if(match.awayTeam === teamName){
-            diff += (match.awayGoals - match.homeGoals);;
-        }
-    });
-
-    return diff;
-};
-
-LeagueTable.prototype.get_wins = function (teamName){
-    wins = 0;
-
-    this.matches.forEach(match => {
-        if(match.homeTeam === teamName && match.homeScore === 3){
-            wins++
-        } else if(match.awayTeam === teamName && match.awayScore === 3){
-            wins++
-        }
-    });
-
-    return wins;
-};
-
-LeagueTable.prototype.get_draws = function (teamName){
-    draws = 0;
-
-    this.matches.forEach(match => {
-        if(match.homeTeam === teamName && match.homeScore === 1){
-            draws++
-        } else if(match.awayTeam === teamName && match.awayScore === 1){
-            draws++
-        }
-    });
-
-    return draws;
-};
-
-LeagueTable.prototype.get_losses = function (teamName){
-    losses = 0;
-
-    this.matches.forEach(match => {
-        if(match.homeTeam === teamName && match.homeScore === 0){
-            losses++
-        } else if(match.awayTeam === teamName && match.awayScore === 0){
-            losses++
-        }
-    });
-
-    return losses;
-};
-
-worldCup2020 = new LeagueTable()
+worldCup2020 = new LeagueTable();
 
 //Tests
 const cases = [
