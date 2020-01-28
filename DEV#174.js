@@ -32,12 +32,22 @@ LeagueTable.prototype.push = function (matchStr){
         homeScore,
         awayScore,
     }
-
     this.matches.push(match)
 
-    console.log(this.matches)
+    return JSON.stringify(match)
+}
 
-    return 0
+LeagueTable.prototype.get_points = function (teamName){
+    points = 0;
+    this.matches.forEach(match => {
+        if(match.homeTeam === teamName){
+            points += match.homeScore
+        } else if(match.awayTeam === teamName){
+            points += match.awayScore
+        }
+    })
+
+    return points
 }
 
 worldCup2020 = new LeagueTable()
@@ -47,12 +57,36 @@ const cases = [
     {
         label: 'Man Utd 2 - 1 Liverpool',
         input: worldCup2020.push('Man Utd 2 - 1 Liverpool'),
-        shouldBe: 'Man Utd 2 - 1 Liverpool'
+        shouldBe: JSON.stringify({
+            homeTeam: 'Man Utd',
+            awayTeam: 'Liverpool',
+            homeGoals: 2,
+            awayGoals: 1,
+            homeScore: 3,
+            awayScore: 0
+        })
     },
     {
         label: 'Liverpool 3 - 0 Man Utd',
         input: worldCup2020.push('Liverpool 3 - 0 Man Utd'),
-        shouldBe: 'Man Utd 2 - 1 Liverpool'
+        shouldBe: JSON.stringify({
+            homeTeam: 'Liverpool',
+            awayTeam: 'Man Utd',
+            homeGoals: 3,
+            awayGoals: 0,
+            homeScore: 3,
+            awayScore: 0
+        })
+    },
+    {
+        label: 'Get Liverpool points',
+        input: worldCup2020.get_points('Liverpool'),
+        shouldBe: 3
+    },
+    {
+        label: 'Get Man Utd points',
+        input: worldCup2020.get_points('Man Utd'),
+        shouldBe: 3
     }
 ]
 
