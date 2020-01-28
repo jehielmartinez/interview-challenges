@@ -31,24 +31,110 @@ LeagueTable.prototype.push = function (matchStr){
         awayGoals,
         homeScore,
         awayScore,
-    }
-    this.matches.push(match)
+    };
 
-    return JSON.stringify(match)
-}
+    this.matches.push(match);
+
+    return JSON.stringify(match);
+};
 
 LeagueTable.prototype.get_points = function (teamName){
     points = 0;
+
     this.matches.forEach(match => {
         if(match.homeTeam === teamName){
-            points += match.homeScore
+            points += match.homeScore;
         } else if(match.awayTeam === teamName){
-            points += match.awayScore
+            points += match.awayScore;
         }
     })
 
-    return points
-}
+    return points;
+};
+
+LeagueTable.prototype.get_goals_for = function (teamName){
+    goals = 0;
+
+    this.matches.forEach(match => {
+        if(match.homeTeam === teamName){
+            goals += match.homeGoals;
+        } else if(match.awayTeam === teamName){
+            goals += match.awayGoals;
+        }
+    });
+
+    return goals;
+};
+
+LeagueTable.prototype.get_goals_against = function (teamName){
+    goals = 0;
+
+    this.matches.forEach(match => {
+        if(match.homeTeam === teamName){
+            goals += match.awayGoals;
+        } else if(match.awayTeam === teamName){
+            goals += match.homeGoals;
+        }
+    });
+
+    return goals;
+};
+
+LeagueTable.prototype.get_goals_difference = function (teamName){
+    diff = 0;
+
+    this.matches.forEach(match => {
+        if(match.homeTeam === teamName){
+            diff += (match.homeGoals - match.awayGoals);
+        } else if(match.awayTeam === teamName){
+            diff += (match.awayGoals - match.homeGoals);;
+        }
+    });
+
+    return diff;
+};
+
+LeagueTable.prototype.get_wins = function (teamName){
+    wins = 0;
+
+    this.matches.forEach(match => {
+        if(match.homeTeam === teamName && match.homeScore === 3){
+            wins++
+        } else if(match.awayTeam === teamName && match.awayScore === 3){
+            wins++
+        }
+    });
+
+    return wins;
+};
+
+LeagueTable.prototype.get_draws = function (teamName){
+    draws = 0;
+
+    this.matches.forEach(match => {
+        if(match.homeTeam === teamName && match.homeScore === 1){
+            draws++
+        } else if(match.awayTeam === teamName && match.awayScore === 1){
+            draws++
+        }
+    });
+
+    return draws;
+};
+
+LeagueTable.prototype.get_losses = function (teamName){
+    losses = 0;
+
+    this.matches.forEach(match => {
+        if(match.homeTeam === teamName && match.homeScore === 0){
+            losses++
+        } else if(match.awayTeam === teamName && match.awayScore === 0){
+            losses++
+        }
+    });
+
+    return losses;
+};
 
 worldCup2020 = new LeagueTable()
 
@@ -87,6 +173,66 @@ const cases = [
         label: 'Get Man Utd points',
         input: worldCup2020.get_points('Man Utd'),
         shouldBe: 3
+    },
+    {
+        label: 'Get Liverpool goals',
+        input: worldCup2020.get_goals_for('Liverpool'),
+        shouldBe: 4
+    },
+    {
+        label: 'Get Man Utd goals',
+        input: worldCup2020.get_goals_for('Man Utd'),
+        shouldBe: 2
+    },
+    {
+        label: 'Get goals against Liverpool',
+        input: worldCup2020.get_goals_against('Liverpool'),
+        shouldBe: 2
+    },
+    {
+        label: 'Get goals against Man Utd',
+        input: worldCup2020.get_goals_against('Man Utd'),
+        shouldBe: 4
+    },
+    {
+        label: 'Get goals difference Liverpool',
+        input: worldCup2020.get_goals_difference('Liverpool'),
+        shouldBe: 2
+    },
+    {
+        label: 'Get goals difference Man Utd',
+        input: worldCup2020.get_goals_difference('Man Utd'),
+        shouldBe: -2
+    },
+    {
+        label: 'Get wins Liverpool',
+        input: worldCup2020.get_wins('Liverpool'),
+        shouldBe: 1
+    },
+    {
+        label: 'Get wins Man Utd',
+        input: worldCup2020.get_wins('Man Utd'),
+        shouldBe: 1
+    },
+    {
+        label: 'Get losses Liverpool',
+        input: worldCup2020.get_losses('Liverpool'),
+        shouldBe: 1
+    },
+    {
+        label: 'Get losses Man Utd',
+        input: worldCup2020.get_losses('Man Utd'),
+        shouldBe: 1
+    },
+    {
+        label: 'Get draws Liverpool',
+        input: worldCup2020.get_draws('Liverpool'),
+        shouldBe: 0
+    },
+    {
+        label: 'Get draws Man Utd',
+        input: worldCup2020.get_draws('Man Utd'),
+        shouldBe: 0
     }
 ]
 
