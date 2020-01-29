@@ -17,7 +17,7 @@ function DNA_strand (str) {
                 result = result + 'C';
                 break;
             default:
-                return result = 'Your DNA is not from this planet';
+                return 'Your DNA is not from this planet';
         }
     }
     return result
