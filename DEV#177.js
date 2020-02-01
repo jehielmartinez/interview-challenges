@@ -1,6 +1,6 @@
 //https://dev.to/thepracticaldev/daily-challenge-177-supersize-me-3fhl
 
-//Buble Sort!
+//Bubble Sort!
 function superSize(num) {
     let str = [...num.toString()];
     let swap;
