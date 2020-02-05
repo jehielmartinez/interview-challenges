@@ -3,7 +3,6 @@
 function squareSort(arr, result = []) {
 
     if (arr.length == 0){
-        console.log(result)
         return result;
     }
 
@@ -18,7 +17,7 @@ function squareSort(arr, result = []) {
         arr.pop();
     };
 
-    squareSort(arr, result);
+    return squareSort(arr, result);
 };
 
 const cases = [
