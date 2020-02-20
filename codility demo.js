@@ -17,19 +17,18 @@
 // N is an integer within the range [1..100,000];
 // each element of array A is an integer within the range [−1,000,000..1,000,000].
 
-
 const A = [1, 3, 6, 4, 1, 2]
 solution(A)
 
-function solution(A) {
-    let uniquesA = Array.from(new Set(A)).sort((a,b) => a-b);
+function solution (A) {
+  const uniquesA = Array.from(new Set(A)).sort((a, b) => a - b)
 
-    for(i=1; i<=uniquesA.length; i++){
-        if(!uniquesA.includes(i)){
-            console.log(i)
-            return i;
-        }
+  for (i = 1; i <= uniquesA.length; i++) {
+    if (!uniquesA.includes(i)) {
+      console.log(i)
+      return i
     }
-    console.log(1)
-    return 1;
+  }
+  console.log(1)
+  return 1
 }

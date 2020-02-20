@@ -5,46 +5,46 @@
 // Write a function:
 // that, given a non-empty array A of N integers, returns the minimal difference that can be achieved.
 
-function tapeEquilibrium(A) {
-    const N = A.length
-    let minDiff = Infinity
-    let P = 1
+function tapeEquilibrium (A) {
+  const N = A.length
+  const minDiff = Infinity
+  let P = 1
 
-    let sumSideA = 0
-    let sumSideB = 0
-    let totalSum = 0    
+  let sumSideA = 0
+  let sumSideB = 0
+  let totalSum = 0
 
-    for (i = 0; i < N; i++) {
-        totalSum = totalSum + A[i]
+  for (i = 0; i < N; i++) {
+    totalSum = totalSum + A[i]
+  }
+
+  while (P < N) {
+    sumSideA = sumSideA + A[P - 1]
+    sumSideB = totalSum - sumSideA
+
+    const diference = Math.abs(sumSideB - sumSideA)
+
+    if (diference <= 1) {
+      return diference
     }
 
-    while (P < N) {
-        sumSideA = sumSideA + A[P-1]
-        sumSideB = totalSum - sumSideA
-            
-        let diference = Math.abs(sumSideB - sumSideA)
-
-        if (diference <= 1){
-            return diference
-        }
-
-        if (diference < minDiff) {
-            minDiff < diference
-        }
-
-        P++
+    if (diference < minDiff) {
+      minDiff < diference
     }
 
-   return minDiff
+    P++
+  }
+
+  return minDiff
 }
 
-//Tests
+// Tests
 const cases = [
-    {
-        label: 'Example array',
-        input: tapeEquilibrium([3, 1, 2, 4, 3]),
-        shouldBe: 1
-    }
+  {
+    label: 'Example array',
+    input: tapeEquilibrium([3, 1, 2, 4, 3]),
+    shouldBe: 1
+  }
 ]
 
-cases.map(test => console.log((test.input == test.shouldBe ? '✅' : '❗') + "  " + test.label + " => " + "Should be: " + test.shouldBe + " received: " + test.input))
+cases.map(test => console.log((test.input == test.shouldBe ? '✅' : '❗') + '  ' + test.label + ' => ' + 'Should be: ' + test.shouldBe + ' received: ' + test.input))
