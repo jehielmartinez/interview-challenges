@@ -2,9 +2,9 @@
 // @Cassidoo newsletter from 11-11-2019
 
 function LogicGate (gate, A, B) {
-  if (A == 1) { A = true } else if (A == 0) { A == false } else { return 'Insert 1 or 0 in variables' }
+  if (A === 1) { A = true } else if (A === 0) { A = false } else { return 'Insert 1 or 0 in variables' }
 
-  if (B == 1) { B = true } else if (B == 0) { B == false } else { return 'Insert 1 or 0 in variables' }
+  if (B === 1) { B = true } else if (B === 0) { B = false } else { return 'Insert 1 or 0 in variables' }
 
   switch (gate) {
     case 'AND':
@@ -12,13 +12,13 @@ function LogicGate (gate, A, B) {
     case 'OR':
       if (A || B) { return 1 } else { return 0 }
     case 'XOR':
-      if (A == B) { return 0 } else { return 1 }
+      if (A === B) { return 0 } else { return 1 }
     case 'NAND':
       if (A && B) { return 0 } else { return 1 }
     case 'NOR':
       if (!A && !B) { return 1 } else { return 0 }
     case 'XNOR':
-      if (A == B) { return 1 } else { return 0 }
+      if (A === B) { return 1 } else { return 0 }
     default:
       return 'Unknown gate'
   }
@@ -128,4 +128,4 @@ const cases = [
   }
 ]
 
-cases.map(test => console.log((test.input == test.shouldBe ? '✅' : '❗') + '  ' + test.label + ' => ' + 'Should be: ' + test.shouldBe + ' received: ' + test.input))
+cases.map(test => console.log((test.input === test.shouldBe ? '✅' : '❗') + '  ' + test.label + ' => ' + 'Should be: ' + test.shouldBe + ' received: ' + test.input))

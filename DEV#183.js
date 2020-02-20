@@ -4,7 +4,7 @@ function autoMorphic (num) {
   const numStr = num.toString()
   const square = Math.pow(num, 2).toString()
 
-  return square.slice(-numStr.length) == numStr
+  return square.slice(-numStr.length) === numStr
 };
 
 // Tests
@@ -31,4 +31,4 @@ const cases = [
   }
 ]
 
-cases.map(test => console.log((test.input == test.shouldBe ? '✅' : '❗') + '  ' + test.label + ' => ' + 'Should be: ' + test.shouldBe + ' received: ' + test.input))
+cases.map(test => console.log((test.input === test.shouldBe ? '✅' : '❗') + '  ' + test.label + ' => ' + 'Should be: ' + test.shouldBe + ' received: ' + test.input))

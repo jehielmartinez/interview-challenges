@@ -6,7 +6,7 @@ function drop (arr, k = 1) {
     return result
   }
 
-  for (i = k; i < len; i++) {
+  for (let i = k; i < len; i++) {
     result.push(arr[i])
   }
 
@@ -33,4 +33,4 @@ const cases = [
   }
 ]
 
-cases.map(test => console.log((test.input == test.shouldBe ? '✅' : '❗') + '  ' + test.label + ' => ' + 'Should be: ' + test.shouldBe + ' received: ' + test.input))
+cases.map(test => console.log((test.input === test.shouldBe ? '✅' : '❗') + '  ' + test.label + ' => ' + 'Should be: ' + test.shouldBe + ' received: ' + test.input))

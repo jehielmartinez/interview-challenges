@@ -4,7 +4,7 @@ function binaryGap (N) {
   let longestGap = 0
   let currentGap = 0
 
-  for (i = 0; i < len; i++) {
+  for (let i = 0; i < len; i++) {
     if (bin.charAt(i) === '1') {
       if (currentGap > longestGap) {
         longestGap = currentGap

@@ -6,7 +6,7 @@
 
 function frogJmp (X, Y, D) {
   if (X > Y) return -1
-  if (X == Y) return 0
+  if (X === Y) return 0
 
   return Math.ceil((Y - X) / D)
 }
@@ -35,4 +35,4 @@ const cases = [
   }
 ]
 
-cases.map(test => console.log((test.input == test.shouldBe ? '✅' : '❗') + '  ' + test.label + ' => ' + 'Should be: ' + test.shouldBe + ' received: ' + test.input))
+cases.map(test => console.log((test.input === test.shouldBe ? '✅' : '❗') + '  ' + test.label + ' => ' + 'Should be: ' + test.shouldBe + ' received: ' + test.input))

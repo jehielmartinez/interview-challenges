@@ -6,7 +6,7 @@ function superSize (num) {
   let swap
   do {
     swap = false
-    for (i = 0; i <= str.length; i++) {
+    for (let i = 0; i <= str.length; i++) {
       if (str[i] < str[i + 1]) {
         const bigger = str[i + 1]
         str[i + 1] = str[i]
@@ -43,4 +43,4 @@ const cases = [
   }
 ]
 
-cases.map(test => console.log((test.input == test.shouldBe ? '✅' : '❗') + '  ' + test.label + ' => ' + 'Should be: ' + test.shouldBe + ' received: ' + test.input))
+cases.map(test => console.log((test.input === test.shouldBe ? '✅' : '❗') + '  ' + test.label + ' => ' + 'Should be: ' + test.shouldBe + ' received: ' + test.input))

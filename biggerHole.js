@@ -3,12 +3,12 @@ function biggerHole (n, m, h, v) {
   const horBars = []
   let maxArea = 0
 
-  for (i = 0; i <= m + 1; i++) {
+  for (let i = 0; i <= m + 1; i++) {
     if (!v.includes(i)) {
       verBars.push(i)
     }
   }
-  for (i = 0; i <= n + 1; i++) {
+  for (let i = 0; i <= n + 1; i++) {
     if (!h.includes(i)) {
       horBars.push(i)
     }
@@ -16,8 +16,8 @@ function biggerHole (n, m, h, v) {
 
   console.log(verBars, horBars)
 
-  for (Hi = 1; Hi <= n; Hi++) {
-    for (Vi = 1; Vi <= m; Vi++) {
+  for (let Hi = 1; Hi <= n; Hi++) {
+    for (let Vi = 1; Vi <= m; Vi++) {
       let area = 0
       area = (verBars[Vi] - verBars[Vi - 1]) * (horBars[Hi] - horBars[Hi - 1])
       if (area > maxArea) {
@@ -47,4 +47,4 @@ const cases = [
   }
 ]
 
-cases.map(test => console.log((test.input == test.shouldBe ? '✅' : '❗') + '  ' + test.label + ' => ' + 'Should be: ' + test.shouldBe + ' received: ' + test.input))
+cases.map(test => console.log((test.input === test.shouldBe ? '✅' : '❗') + '  ' + test.label + ' => ' + 'Should be: ' + test.shouldBe + ' received: ' + test.input))

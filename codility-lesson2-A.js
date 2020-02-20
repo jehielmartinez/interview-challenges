@@ -2,8 +2,8 @@ function OddOcurrences (A) {
   const len = A.length
   A.sort()
 
-  for (i = 0; i < len; i++) {
-    if (A[i] != A[i + 1] && A[i] != A[i - 1]) {
+  for (let i = 0; i < len; i++) {
+    if (A[i] !== A[i + 1] && A[i] !== A[i - 1]) {
       return A[i]
     }
   }

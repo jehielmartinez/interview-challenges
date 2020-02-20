@@ -11,11 +11,11 @@ function permMissingElem (A) {
   let Asum = 0
   let Nsum = 0
 
-  for (i = 1; i <= N + 1; i++) {
+  for (let i = 1; i <= N + 1; i++) {
     Nsum = Nsum + i
   }
 
-  for (i = 0; i < N; i++) {
+  for (let i = 0; i < N; i++) {
     Asum = Asum + A[i]
   }
 
@@ -36,4 +36,4 @@ const cases = [
   }
 ]
 
-cases.map(test => console.log((test.input == test.shouldBe ? '✅' : '❗') + '  ' + test.label + ' => ' + 'Should be: ' + test.shouldBe + ' received: ' + test.input))
+cases.map(test => console.log((test.input === test.shouldBe ? '✅' : '❗') + '  ' + test.label + ' => ' + 'Should be: ' + test.shouldBe + ' received: ' + test.input))

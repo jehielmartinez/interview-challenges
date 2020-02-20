@@ -7,14 +7,14 @@
 
 function tapeEquilibrium (A) {
   const N = A.length
-  const minDiff = Infinity
+  let minDiff = Infinity
   let P = 1
 
   let sumSideA = 0
   let sumSideB = 0
   let totalSum = 0
 
-  for (i = 0; i < N; i++) {
+  for (let i = 0; i < N; i++) {
     totalSum = totalSum + A[i]
   }
 
@@ -29,7 +29,7 @@ function tapeEquilibrium (A) {
     }
 
     if (diference < minDiff) {
-      minDiff < diference
+      minDiff = diference
     }
 
     P++
@@ -47,4 +47,4 @@ const cases = [
   }
 ]
 
-cases.map(test => console.log((test.input == test.shouldBe ? '✅' : '❗') + '  ' + test.label + ' => ' + 'Should be: ' + test.shouldBe + ' received: ' + test.input))
+cases.map(test => console.log((test.input === test.shouldBe ? '✅' : '❗') + '  ' + test.label + ' => ' + 'Should be: ' + test.shouldBe + ' received: ' + test.input))

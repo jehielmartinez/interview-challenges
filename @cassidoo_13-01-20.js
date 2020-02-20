@@ -3,7 +3,7 @@
 
 function palindromes (n) {
   let result = 0
-  for (i = 1; i < 10; i++) {
+  for (let i = 1; i < 10; i++) {
     const strMultiplier = '1'.repeat(n)
 
     result = result + i * parseInt(strMultiplier)
@@ -35,4 +35,4 @@ const cases = [
   }
 ]
 
-cases.map(test => console.log((test.input == test.shouldBe ? '✅' : '❗') + '  ' + test.label + ' => ' + 'Should be: ' + test.shouldBe + ' received: ' + test.input))
+cases.map(test => console.log((test.input === test.shouldBe ? '✅' : '❗') + '  ' + test.label + ' => ' + 'Should be: ' + test.shouldBe + ' received: ' + test.input))

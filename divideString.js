@@ -1,8 +1,8 @@
 function divideString (str) {
   const result = []
 
-  for (i = 0; i <= str.length; i++) {
-    for (x = i + 1; x <= str.length; x++) {
+  for (let i = 0; i <= str.length; i++) {
+    for (let x = i + 1; x <= str.length; x++) {
       result.push((str.substring(i, x)))
     }
   }
@@ -30,4 +30,4 @@ const cases = [
   }
 ]
 
-cases.map(test => console.log((test.input == test.shouldBe ? '✅' : '❗') + '  ' + test.label + ' => ' + 'Should be: ' + test.shouldBe + ' received: ' + test.input))
+cases.map(test => console.log((test.input === test.shouldBe ? '✅' : '❗') + '  ' + test.label + ' => ' + 'Should be: ' + test.shouldBe + ' received: ' + test.input))

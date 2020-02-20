@@ -1,7 +1,7 @@
 // given a sorted array, return other array with the sorted values
 // [-3, 1, 2, 3] => [1, 4, 9, 9]
 function squareSort (arr, result = []) {
-  if (arr.length == 0) {
+  if (arr.length === 0) {
     return result
   }
 
@@ -32,4 +32,4 @@ const cases = [
   }
 ]
 
-cases.map(test => console.log((test.input == test.shouldBe ? '✅' : '❗') + '  ' + test.label + ' => ' + 'Should be: ' + test.shouldBe + ' received: ' + test.input))
+cases.map(test => console.log((test.input === test.shouldBe ? '✅' : '❗') + '  ' + test.label + ' => ' + 'Should be: ' + test.shouldBe + ' received: ' + test.input))

@@ -4,7 +4,7 @@ function splitArray (arr) {
   const reducer = (acc, value) => acc + value
   const totalSum = arr.reduce(reducer)
 
-  for (i = 1; i < arr.length; i++) {
+  for (let i = 1; i < arr.length; i++) {
     const splitedSum = arr.slice(i).reduce(reducer)
     if ((totalSum - splitedSum) > splitedSum) {
       result++
@@ -27,4 +27,4 @@ const cases = [
   }
 ]
 
-cases.map(test => console.log((test.input == test.shouldBe ? '✅' : '❗') + '  ' + test.label + ' => ' + 'Should be: ' + test.shouldBe + ' received: ' + test.input))
+cases.map(test => console.log((test.input === test.shouldBe ? '✅' : '❗') + '  ' + test.label + ' => ' + 'Should be: ' + test.shouldBe + ' received: ' + test.input))

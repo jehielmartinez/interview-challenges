@@ -3,7 +3,7 @@
 function isFactorial (n) {
   let num = n
 
-  for (i = 2; i <= n; i++) {
+  for (let i = 2; i <= n; i++) {
     num = num / i
     if (num === 1) {
       return true
@@ -42,4 +42,4 @@ const cases = [
   }
 ]
 
-cases.map(test => console.log((test.input == test.shouldBe ? '✅' : '❗') + '  ' + test.label + ' => ' + 'Should be: ' + test.shouldBe + ' received: ' + test.input))
+cases.map(test => console.log((test.input === test.shouldBe ? '✅' : '❗') + '  ' + test.label + ' => ' + 'Should be: ' + test.shouldBe + ' received: ' + test.input))

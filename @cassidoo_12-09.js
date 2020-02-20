@@ -17,13 +17,13 @@ function minJumps (stones) {
     let maxIndex = index
     touched.push(stones[index])
 
-    for (i = index + 1; i <= stones[index]; i++) {
+    for (let i = index + 1; i <= stones[index]; i++) {
       if (stones[i] >= targetIndex - i) {
         touched.push(stones[i])
         return targetIndex
       }
 
-      if (stones[i] == 0) {
+      if (stones[i] === 0) {
         return -1
       }
 
@@ -35,14 +35,14 @@ function minJumps (stones) {
   }
 
   while (currentIndex < targetIndex) {
-    if (currentIndex == -1) {
+    if (currentIndex === -1) {
       return -1
     }
 
     currentIndex = jump(currentIndex)
   }
 
-  if (currentIndex == targetIndex) {
+  if (currentIndex === targetIndex) {
     touched.push(stones[targetIndex])
   }
 

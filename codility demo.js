@@ -23,12 +23,11 @@ solution(A)
 function solution (A) {
   const uniquesA = Array.from(new Set(A)).sort((a, b) => a - b)
 
-  for (i = 1; i <= uniquesA.length; i++) {
+  for (let i = 1; i <= uniquesA.length; i++) {
     if (!uniquesA.includes(i)) {
       console.log(i)
       return i
     }
   }
-  console.log(1)
   return 1
 }

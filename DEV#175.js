@@ -2,7 +2,7 @@
 
 function DNA_strand (str) {
   let result = ''
-  for (i = 0; i < str.length; i++) {
+  for (let i = 0; i < str.length; i++) {
     switch (str[i]) {
       case 'A':
         result = result + 'T'
@@ -47,4 +47,4 @@ const cases = [
   }
 ]
 
-cases.map(test => console.log((test.input == test.shouldBe ? '✅' : '❗') + '  ' + test.label + ' => ' + 'Should be: ' + test.shouldBe + ' received: ' + test.input))
+cases.map(test => console.log((test.input === test.shouldBe ? '✅' : '❗') + '  ' + test.label + ' => ' + 'Should be: ' + test.shouldBe + ' received: ' + test.input))

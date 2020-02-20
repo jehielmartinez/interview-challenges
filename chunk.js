@@ -2,7 +2,7 @@ function chunk (arr, k) {
   const result = []
   const len = arr.length
 
-  for (i = 0; i < len; i = i + k) {
+  for (let i = 0; i < len; i = i + k) {
     result.push((arr.slice(i, i + k)))
   }
 
@@ -24,4 +24,4 @@ const cases = [
 
 ]
 
-cases.map(test => console.log((test.input == test.shouldBe ? '✅' : '❗') + '  ' + test.label + ' => ' + 'Should be: ' + test.shouldBe + ' received: ' + test.input))
+cases.map(test => console.log((test.input === test.shouldBe ? '✅' : '❗') + '  ' + test.label + ' => ' + 'Should be: ' + test.shouldBe + ' received: ' + test.input))

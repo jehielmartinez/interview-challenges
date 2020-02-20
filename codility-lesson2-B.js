@@ -2,7 +2,7 @@ function cyclicRotation (A, K) {
   const len = A.length
   const B = []
 
-  for (i = 0; i < len; i++) {
+  for (let i = 0; i < len; i++) {
     const position = (i + K) % len
     B[position] = A[i]
   }
@@ -29,4 +29,4 @@ const cases = [
   }
 ]
 
-cases.map(test => console.log((test.input == test.shouldBe ? '✅' : '❗') + '  ' + test.label + ' => ' + 'Should be: ' + test.shouldBe + ' received: ' + test.input))
+cases.map(test => console.log((test.input === test.shouldBe ? '✅' : '❗') + '  ' + test.label + ' => ' + 'Should be: ' + test.shouldBe + ' received: ' + test.input))
